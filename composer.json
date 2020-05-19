@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "apal-gestion",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Web App para la gestión de recursos de la Asociación de Padres Liceales",
     "keywords": [
         "framework",
         "laravel"
