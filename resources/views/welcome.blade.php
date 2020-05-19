@@ -70,10 +70,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                         @endif
                     @endauth
                 </div>
@@ -81,18 +81,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    APAL
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://www.facebook.com/apaldel30/">Dale Me gusta a nuestra página</a>
+                    <a href="https://www.instagram.com/apaldel30/">Seguínos en IG</a>
+                    <a href="https://twitter.com/Apaldel30">Seguínos en Twitter</a>
+                    <a href="https://www.youtube.com/channel/UCs0N-Zl5rTZarnnYSYZzqFw">Suscríbite a nuestro canal</a>
                 </div>
             </div>
         </div>
