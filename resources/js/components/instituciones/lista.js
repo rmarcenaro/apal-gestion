@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
 
 class InstitucionFila extends Component {
 
@@ -9,14 +8,18 @@ class InstitucionFila extends Component {
         return(
             <tr>
                 <td>
-                    <a href='/institucion/editar/{this.props.institucion.id}' alt='Editar' title='Editar'>
+                    <a href={"/instituciones/editar/" + this.props.institucion.id} alt='Editar' title='Editar'>
                         {this.props.institucion.nombre}
                     </a>
                 </td>
                 <td>
                     { this.props.institucion.estado_id ? 'Activa' : 'Inactiva' }
                 </td>
-                <td></td>
+                <td>
+                    <a href={"/instituciones/editar/" + this.props.institucion.id} alt='Editar' title='Editar'>
+                        Editar
+                    </a>
+                </td>
             </tr>
         );
     }
@@ -28,14 +31,14 @@ class InstitucionLista extends Component {
     constructor () {
         super()
         this.state = {
-          instituciones: []
+            instituciones: []
         }
     }
 
     componentDidMount () {
-        axios.get('/api/institucion').then(response => {
+        axios.get('/api/instituciones').then(response => {
           this.setState({
-            instituciones: response.data
+              instituciones: response.data.data
           })
         })
     }
@@ -44,7 +47,8 @@ class InstitucionLista extends Component {
 
         const { instituciones } = this.state
 
-        if (!instituciones.length) {
+        //if (!instituciones.length) {
+        if (instituciones && instituciones.data && instituciones.data.length == 0){
 
             return (
 
@@ -58,26 +62,22 @@ class InstitucionLista extends Component {
                                 <div className='alert alert-success' role='alert'>
                                     [SESSIONSTATUS]
                                 </div>
-
-                                if (!instituciones.length) {
-                                    <div className='table-responsive'>
-                                    <table className='table table-condensed table-hover' key='tabla-instituciones'>
-                                        <thead>
-                                            <tr>
-                                                <th>Institución</th>
-                                                <th>Activa</th>
-                                                <th className='text-center'>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td colSpan="3">No existen instituciones registradas.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    </div>
-                                }
-
+                                <div className='table-responsive'>
+                                <table className='table table-condensed table-hover' key='tabla-instituciones'>
+                                    <thead>
+                                        <tr>
+                                            <th>Institución</th>
+                                            <th>Activa</th>
+                                            <th className='text-center'>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan="3">No existen instituciones registradas.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@ class InstitucionLista extends Component {
                 </div>
             )
 
-        }else{
+        } else {
 
             return (
 

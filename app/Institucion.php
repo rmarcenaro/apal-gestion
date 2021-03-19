@@ -16,6 +16,14 @@ class Institucion extends Model
     const CREATED_AT = 'fecha_creacion';
     const UPDATED_AT = 'fecha_modificacion';
 
+    public const ESTADO_INHABILITADO = "INHABILITADA";
+    public const ESTADO_HABILITADO = "HABILITADA";
+
+    public const ESTADOS = [
+        self::ESTADO_INHABILITADO => 0,
+        self::ESTADO_HABILITADO => 1
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -32,5 +40,4 @@ class Institucion extends Model
     {
         return $this->hasMany('App\User');
     }
-
 }

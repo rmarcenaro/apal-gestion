@@ -13,22 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('institucion', 'InstitucionController');
-*/
-
 Auth::routes();
 
-Route::group(['prefix' => 'ajax'], function() {
+Route::group(['prefix' => 'ajax'], function () {
     // all routes that don't need to go to react-router
+});
+
+Route::prefix('api')->group(function () {
+
+    Route::middleware('auth:api')->get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::apiResource('instituciones', 'Api\InstitucionController')->parameters([
+        'instituciones' => 'id'
+    ]);
+
+    Route::post('/login', 'Api\AuthController@login');
 });
 
 Route::get('/{path?}', function () {
     return view('layouts.app');
-});
+})->where('path', '.*'); //->where(['path' => '^(?!api).*$']);

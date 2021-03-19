@@ -14,10 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::resource('institucion', 'InstitucionController');
-
-Route::post('/login', 'Api\AuthController@login');
+// TODO: investigar. Mude las rutas para routes/web.php, porque acá daban 404
